@@ -267,4 +267,50 @@ static void StartGiantFight(Player player, List<BossLog> bossLogs, List<int > hi
         player.CurrentHp = player.MaxHp;
         Console.ResetColor();
     }
+
+    static void HandleShop(Player player)
+    {
+        const int lobsterPrice = 20;
+        const int potionPrice = 50;
+
+        bool shopping = true;
+        while (shopping)
+        {
+            Console.WriteLine("\n--- Edgeville General Store ---");
+            Console.WriteLine($"Gold: {player.Gold}");
+            Console.WriteLine($"1. Lobster - {lobsterPrice} GP");
+            Console.WriteLine($"2. Strength Potion - {potionPrice} GP");
+            Console.WriteLine("3. Exit shop");
+            Console.Write("Choose an option: ");
+            
+            string choice = Console.ReadLine()?.Trim() ?? "";
+            switch (choice)
+            {
+                case "1":
+                    BuyItem (player, "Lobster", lobsterPrice);
+                    break;
+                case "2":
+                    BuyItem(player, "Strength Potion", potionPrice);
+                    break;
+                case "3":
+                    shopping = false;
+                    break;
+                default:
+                    Console.WriteLine($"Invalid option.");
+                    break;
+            }
+        }
+
+        static void BuyItem(Player player, string itemName, int price)
+        {
+            if (player.Gold < price)
+            {
+                Console.WriteLine($"You do not have enough gold to buy {itemName}!");
+                return;
+            }
+            player.Gold -= price;
+            player.AddItem(itemName, 1);
+            Console.WriteLine($"Bought 1x {itemName} for {price} GP. Remaining gold: {player.Gold}");
+        }
+    }
 }
