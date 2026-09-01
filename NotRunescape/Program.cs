@@ -3,13 +3,21 @@ using OsrsTracker;
 
 var bossLogs = new List<BossLog>();
 var player = new Player();
+var hitHistory = new List<int>();
 
+Console.Write("Name?");
+string playerName = Console.ReadLine()?.Trim();
+if (string.IsNullOrWhiteSpace(playerName))
+{
+    playerName = "Unknown";
+}
 Console.WriteLine("=== OSRS Boss & Combat Tracker ===");
+Console.WriteLine($"Welcome to Gielinor, {playerName}!");
 
 while (true)
 {
     Console.WriteLine($"\n[HP: {player.CurrentHp}/{player.MaxHp} | Gold: {player.Gold} GP]");
-    Console.Write("[1] Log Boss Kill  [2] View Drop Log  [3] View Inventory  [4] Drop Item  [99] Fight Hill Giant  [0] Exit\nChoice: ");
+    Console.Write("[1] Log Boss Kill  [2] View Drop Log  [3] View Inventory  [4] Drop Item [5] Rest at Lumbridge [99] Fight Hill Giant  [0] Exit\nChoice: ");
     var input = Console.ReadLine()?.Trim();
 
     if (input == "0") break;
@@ -31,6 +39,7 @@ while (true)
     else if (input == "2")
     {
         Console.WriteLine("\n--- Drop Log ---");
+        Console.WriteLine($"Total Drops Logged: {bossLogs.Count}");
         if (bossLogs.Count == 0) Console.WriteLine("No drops logged yet!");
         for (int i = 0; i < bossLogs.Count; i++)
         {
@@ -47,9 +56,14 @@ while (true)
     {
         HandleDropItem(player);
     }
+    else if (input == "5")
+    {
+        player.CurrentHp = player.MaxHp;
+        Console.WriteLine($"\nYou rest at Lumbridge and feel fully restored! HP: {player.CurrentHp}/{player.MaxHp}");
+    }
     else if (input == "99")
     {
-        StartGiantFight(player, bossLogs);
+        StartGiantFight(player, bossLogs, hitHistory);
     }
 }
 
@@ -61,12 +75,21 @@ static void HandleDropItem(Player player)
     Console.Write("\nEnter the exact name of the item to drop: ");
     string itemToDrop = Console.ReadLine()?.Trim() ?? "";
 
+    string matchedKey = player.Inventory.Keys
+        .FirstOrDefault(k => string.Equals(k, itemToDrop, StringComparison.OrdinalIgnoreCase));
+
+    if (matchedKey == null)
+    {
+        Console.WriteLine("You don't have that item.");
+        return;
+    }
+    
     Console.Write("How many to drop?: ");
     if (int.TryParse(Console.ReadLine(), out int amount) && amount > 0)
     {
-        if (player.DropItem(itemToDrop, amount))
+        if (player.DropItem(matchedKey, amount))
         {
-            Console.WriteLine($"Dropped {amount}x {itemToDrop}.");
+            Console.WriteLine($"Dropped {amount}x {matchedKey}.");
         }
         else
         {
@@ -79,7 +102,7 @@ static void HandleDropItem(Player player)
     }
 }
 
-static void StartGiantFight(Player player, List<BossLog> bossLogs)
+static void StartGiantFight(Player player, List<BossLog> bossLogs, List<int > hitHistory)
 {
     if (player.CurrentHp <= 0)
     {
@@ -96,16 +119,18 @@ static void StartGiantFight(Player player, List<BossLog> bossLogs)
 
     int giantHp = 35;
     var rng = new Random();
+    bool hasFled = false;
 
     while (player.CurrentHp > 0 && giantHp > 0)
     {
         Console.WriteLine($"Your HP: {player.CurrentHp}/{player.MaxHp} | Hill Giant HP: {giantHp}");
-        Console.Write("Action: [1] Slash with Rune Scimitar  [2] Eat Lobster\nChoice: ");
+        Console.Write("Action: [1] Slash with Rune Scimitar  [2] Eat Lobster [3] Special Attack  [4] Run Away\nChoice: [6] hitHistory:");
         var choice = Console.ReadLine()?.Trim();
 
         if (choice == "1")
         {
             int playerHit = rng.Next(0, 15);
+            hitHistory.Add(playerHit);
             giantHp -= playerHit;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\nYou slash the Hill Giant for a {playerHit}!");
@@ -124,6 +149,61 @@ static void StartGiantFight(Player player, List<BossLog> bossLogs)
                 Console.WriteLine("\nYou don't have any Lobsters in your inventory!");
             }
         }
+        else if (choice == "3")
+        {
+            if (player.Gold >= 50)
+            {
+                player.Gold -= 50;
+                int hit1 = rng.Next(0, 10);
+                int hit2 = rng.Next(0, 10);
+                int totalDamage = hit1 + hit2;
+                giantHp -= totalDamage;
+
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"\nYou unleash a Special Attack! ({hit1} + {hit2} = {totalDamage} damage) [-50 GP]");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.WriteLine("\nYou don't have enough gold (50 GP) to cast a Special Attack!");
+            }
+        }
+        else if (choice == "4")
+        {
+            bool escaped = rng.Next(0, 2) == 0;
+            if (escaped)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\nYou successfully flee from the Hill Giant!");
+                Console.ResetColor();
+                hasFled = true;
+                break;
+            }
+            else
+            {
+                Console.WriteLine("\nYou try to flee, but the Hill Giant blocks your path!");
+            }
+        }
+        else if (choice == "6")
+        {
+            Console.WriteLine("\n--- Top 3 Hits ---");
+
+            if (hitHistory.Count == 0)
+            {
+                Console.WriteLine("No hits recorded yet!");
+            }
+            else
+            {
+                var topHits = hitHistory
+                    .OrderByDescending(hit => hit)
+                    .Take(3);
+
+                foreach (var hit in topHits)
+                {
+                    Console.WriteLine($"Hit: {hit}");
+                }
+            }
+        }
 
         if (giantHp > 0)
         {
@@ -133,6 +213,14 @@ static void StartGiantFight(Player player, List<BossLog> bossLogs)
             Console.WriteLine($"The Hill Giant swings his club for {giantHit} damage!\n");
             Console.ResetColor();
         }
+    }
+
+    if (hasFled)
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\nYou escape the Hill Giant Cave with your life, leaving any loot behind.");
+        Console.ResetColor();
+        return;
     }
 
     if (player.CurrentHp > 0)

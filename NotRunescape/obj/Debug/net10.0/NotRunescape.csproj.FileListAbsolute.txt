@@ -1,14 +1,29 @@
-C:\Users\kan\Education material\NotRunescape\NotRunescape\bin\Debug\net10.0\NotRunescape.exe
-C:\Users\kan\Education material\NotRunescape\NotRunescape\bin\Debug\net10.0\NotRunescape.deps.json
-C:\Users\kan\Education material\NotRunescape\NotRunescape\bin\Debug\net10.0\NotRunescape.runtimeconfig.json
-C:\Users\kan\Education material\NotRunescape\NotRunescape\bin\Debug\net10.0\NotRunescape.dll
-C:\Users\kan\Education material\NotRunescape\NotRunescape\bin\Debug\net10.0\NotRunescape.pdb
-C:\Users\kan\Education material\NotRunescape\NotRunescape\obj\Debug\net10.0\NotRunescape.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\kan\Education material\NotRunescape\NotRunescape\obj\Debug\net10.0\NotRunescape.AssemblyInfoInputs.cache
-C:\Users\kan\Education material\NotRunescape\NotRunescape\obj\Debug\net10.0\NotRunescape.AssemblyInfo.cs
-C:\Users\kan\Education material\NotRunescape\NotRunescape\obj\Debug\net10.0\NotRunescape.csproj.CoreCompileInputs.cache
-C:\Users\kan\Education material\NotRunescape\NotRunescape\obj\Debug\net10.0\NotRunescape.dll
-C:\Users\kan\Education material\NotRunescape\NotRunescape\obj\Debug\net10.0\refint\NotRunescape.dll
-C:\Users\kan\Education material\NotRunescape\NotRunescape\obj\Debug\net10.0\NotRunescape.pdb
-C:\Users\kan\Education material\NotRunescape\NotRunescape\obj\Debug\net10.0\NotRunescape.genruntimeconfig.cache
-C:\Users\kan\Education material\NotRunescape\NotRunescape\obj\Debug\net10.0\ref\NotRunescape.dll
+C:/Users/kan/Education material/NotRunescape/NotRunescape/bin/Debug/net10.0/NotRunescape.exe
+C:/Users/kan/Education material/NotRunescape/NotRunescape/bin/Debug/net10.0/NotRunescape.deps.json
+C:/Users/kan/Education material/NotRunescape/NotRunescape/bin/Debug/net10.0/NotRunescape.runtimeconfig.json
+C:/Users/kan/Education material/NotRunescape/NotRunescape/bin/Debug/net10.0/NotRunescape.dll
+C:/Users/kan/Education material/NotRunescape/NotRunescape/bin/Debug/net10.0/NotRunescape.pdb
+C:/Users/kan/Education material/NotRunescape/NotRunescape/obj/Debug/net10.0/NotRunescape.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/kan/Education material/NotRunescape/NotRunescape/obj/Debug/net10.0/NotRunescape.AssemblyInfoInputs.cache
+C:/Users/kan/Education material/NotRunescape/NotRunescape/obj/Debug/net10.0/NotRunescape.AssemblyInfo.cs
+C:/Users/kan/Education material/NotRunescape/NotRunescape/obj/Debug/net10.0/NotRunescape.csproj.CoreCompileInputs.cache
+C:/Users/kan/Education material/NotRunescape/NotRunescape/obj/Debug/net10.0/NotRunescape.dll
+C:/Users/kan/Education material/NotRunescape/NotRunescape/obj/Debug/net10.0/refint/NotRunescape.dll
+C:/Users/kan/Education material/NotRunescape/NotRunescape/obj/Debug/net10.0/NotRunescape.pdb
+C:/Users/kan/Education material/NotRunescape/NotRunescape/obj/Debug/net10.0/NotRunescape.genruntimeconfig.cache
+C:/Users/kan/Education material/NotRunescape/NotRunescape/obj/Debug/net10.0/ref/NotRunescape.dll
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/bin/Debug/net10.0/NotRunescape
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/bin/Debug/net10.0/NotRunescape.deps.json
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/bin/Debug/net10.0/NotRunescape.runtimeconfig.json
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/bin/Debug/net10.0/NotRunescape.dll
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/bin/Debug/net10.0/NotRunescape.pdb
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/obj/Debug/net10.0/NotRunescape.GeneratedMSBuildEditorConfig.editorconfig
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/obj/Debug/net10.0/NotRunescape.AssemblyInfoInputs.cache
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/obj/Debug/net10.0/NotRunescape.AssemblyInfo.cs
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/obj/Debug/net10.0/NotRunescape.csproj.CoreCompileInputs.cache
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/obj/Debug/net10.0/NotRunescape.sourcelink.json
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/obj/Debug/net10.0/NotRunescape.dll
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/obj/Debug/net10.0/refint/NotRunescape.dll
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/obj/Debug/net10.0/NotRunescape.pdb
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/obj/Debug/net10.0/NotRunescape.genruntimeconfig.cache
+/Users/malthehager/RiderProjects/not-runescape/NotRunescape/obj/Debug/net10.0/ref/NotRunescape.dll
